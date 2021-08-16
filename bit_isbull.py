@@ -23,4 +23,5 @@ def bull_market(ticker):
     '5일 평균' : close.iloc[-6: -1].mean(),
     '현재 가격': pyupbit.get_current_price(ticker)
     }
-    return sorted(ma.items(), key = lambda  x: x[1])
+    rank = sorted(ma.items(), key = lambda  x: x[1])
+    return ''.join(rank)
