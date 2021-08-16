@@ -1,6 +1,8 @@
 name: check_bull_market_every_9AM
 
-on: [push]
+on:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build-linux:
