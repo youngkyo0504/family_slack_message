@@ -1,6 +1,7 @@
 # 비트코인 상승장 판별기
 - 매일 아침 9시에 githubissue에 5,20,60,120일 평균가격,현재가격 제공
   - 가격이 낮은 순서대로 제공합니다.
+  - [오늘자 평균가격 보러가기](https://github.com/youngkyo0504/is_bull_market/issues)
     
     <br/>
 ## 상승장 판별 방법
