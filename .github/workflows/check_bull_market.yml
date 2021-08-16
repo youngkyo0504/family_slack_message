@@ -1,0 +1,27 @@
+name: check_bull_market_every_9AM
+
+on: [push]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+           python -m pip install --upgrade pip
+           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run main.py
+      run: |
+          python main.py
+          env:
+            UPBIT_ACCESS: ${{ secrets.UPBIT_ACCESS }}
+            UPBIT_SECRET: ${{ secrets.UPBIT_SECRET }}
+            MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}  
