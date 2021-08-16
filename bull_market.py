@@ -27,5 +27,6 @@ def bull_market(ticker):
     rank_string = ''
     for ma in rank_arr:
         name, price = ma
-        rank_string += f'- {name} : {price} \n'
+        price = format(round(price), ',')
+        rank_string += f'- {name} : {price} 원 \n'
     return rank_string

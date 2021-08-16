@@ -1,7 +1,7 @@
 from github import Github
 from datetime import datetime
 from pytz import timezone
-from bit_isbull import bull_market
+from bull_market import bull_market
 
 def get_today():
     seoul_timezone = timezone('Asia/Seoul')
