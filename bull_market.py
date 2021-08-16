@@ -21,11 +21,11 @@ def bull_market(ticker):
     '20일 평균' : close.iloc[-21:-1].mean(),
     '60일 평균' : close.iloc[-61:-1].mean(),
     '5일 평균' : close.iloc[-6: -1].mean(),
-    f'현재 가격(아침9시 기준)': pyupbit.get_current_price(ticker)
+    '현재 가격': pyupbit.get_current_price(ticker)
     }
 
     rank_arr = sorted(ma.items(), reverse=True, key=lambda x: x[1])
-    rank_string = '높은 가격 순서입니다. \n'
+    rank_string = '높은 가격 순서입니다.(아침 9시 기준)  \n'
     for ma in rank_arr:
         name, price = ma
         price = format(round(price), ',')
