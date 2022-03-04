@@ -34,8 +34,7 @@ def upload_github_issue(repo, title, body):
     """
     repo.create_issue(title=title, body=body)
 
-def upload_bull_market_issue(access_token, repository_name):
+def upload_bull_market_issue(access_token, repository_name,body):
     repo = get_github_repo(access_token,repository_name)
     title = get_title()
-    body = bull_market("KRW-BTC")
     upload_github_issue(repo,title, body)
