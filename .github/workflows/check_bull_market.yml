@@ -29,4 +29,5 @@ jobs:
       env:
           UPBIT_ACCESS: ${{ secrets.UPBIT_ACCESS }}
           UPBIT_SECRET: ${{ secrets.UPBIT_SECRET }}
+          SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}  
