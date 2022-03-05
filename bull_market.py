@@ -1,5 +1,11 @@
 import os
 import pyupbit
+from datetime import datetime
+from pytz import timezone
+
+
+
+
 
 #api연결
 access = os.environ['UPBIT_ACCESS']
@@ -23,7 +29,8 @@ def is_bull(maList):
 
 def make_message(ma,is_bull):
     rank_arr = sorted(ma.items(), reverse=True, key=lambda x: x[1])
-    rank_string = '높은 가격 순서입니다.(아침 9시 기준)  \n'
+    currentTime = datetime.now(timezone('Asia/Seoul')).strftime('%Y-%m-%d %H:%M')
+    rank_string = f'높은 가격 순서입니다.({currentTime} 기준)  \n'
     for ma in rank_arr:
         name, price = ma
         price = format(round(price), ',')
