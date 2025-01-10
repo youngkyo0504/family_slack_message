@@ -14,7 +14,7 @@ def calculate_kimchi_premium(kr_price, exchange_rate):
     return round(premium, 2)
 
 
-async def fetch_exchange():
+def fetch_exchange():
     # 환율 정보 조회
     exchange_rate = requests.get("https://api.exchangerate-api.com/v4/latest/USD")
     usd_to_krw = exchange_rate.json()["rates"]["KRW"]
