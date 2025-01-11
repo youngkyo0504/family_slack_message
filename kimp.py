@@ -17,7 +17,7 @@ def calculate_kimchi_premium(kr_price, exchange_rate):
 
 def fetch_exchange():
     # 환율 정보 조회
-    exchange_rate = read_exchange_rate()
+    exchange_rate = float(read_exchange_rate())
 
     return exchange_rate
 
