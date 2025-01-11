@@ -6,22 +6,6 @@ from googleapiclient.errors import HttpError
 
 class GoogleSheetsManager:
     def __init__(self):
-        required_env_vars = [
-            "GOOGLE_SHEETS_TYPE",
-            "GOOGLE_SHEETS_PROJECT_ID",
-            "GOOGLE_SHEETS_PRIVATE_KEY_ID",
-            "GOOGLE_SHEETS_PRIVATE_KEY",
-            "GOOGLE_SHEETS_CLIENT_EMAIL",
-            "GOOGLE_SHEETS_CLIENT_ID",
-        ]
-
-        # 필수 환경 변수 검증
-        missing_vars = [var for var in required_env_vars if not os.environ[var]]
-        if missing_vars:
-            raise ValueError(
-                f"Missing required environment variables: {', '.join(missing_vars)}"
-            )
-
         # private key 특수 처리 (개행 문자 변환)
         private_key = os.environ["GOOGLE_SHEETS_PRIVATE_KEY"]
         if private_key:
