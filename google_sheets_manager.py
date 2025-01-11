@@ -16,30 +16,30 @@ class GoogleSheetsManager:
         ]
 
         # 필수 환경 변수 검증
-        missing_vars = [var for var in required_env_vars if not os.getenv(var)]
+        missing_vars = [var for var in required_env_vars if not os.environ[var]]
         if missing_vars:
             raise ValueError(
                 f"Missing required environment variables: {', '.join(missing_vars)}"
             )
 
         # private key 특수 처리 (개행 문자 변환)
-        private_key = os.getenv("GOOGLE_SHEETS_PRIVATE_KEY")
+        private_key = os.environ["GOOGLE_SHEETS_PRIVATE_KEY"]
         if private_key:
             private_key = private_key.replace("\\n", "\n")
 
         credentials_dict = {
-            "type": os.getenv("GOOGLE_SHEETS_TYPE"),
-            "project_id": os.getenv("GOOGLE_SHEETS_PROJECT_ID"),
-            "private_key_id": os.getenv("GOOGLE_SHEETS_PRIVATE_KEY_ID"),
+            "type": os.environ["GOOGLE_SHEETS_TYPE"],
+            "project_id": os.environ["GOOGLE_SHEETS_PROJECT_ID"],
+            "private_key_id": os.environ["GOOGLE_SHEETS_PRIVATE_KEY_ID"],
             "private_key": private_key,
-            "client_email": os.getenv("GOOGLE_SHEETS_CLIENT_EMAIL"),
-            "client_id": os.getenv("GOOGLE_SHEETS_CLIENT_ID"),
-            "auth_uri": os.getenv("GOOGLE_SHEETS_AUTH_URI"),
-            "token_uri": os.getenv("GOOGLE_SHEETS_TOKEN_URI"),
-            "auth_provider_x509_cert_url": os.getenv(
+            "client_email": os.environ["GOOGLE_SHEETS_CLIENT_EMAIL"],
+            "client_id": os.environ["GOOGLE_SHEETS_CLIENT_ID"],
+            "auth_uri": os.environ["GOOGLE_SHEETS_AUTH_URI"],
+            "token_uri": os.environ["GOOGLE_SHEETS_TOKEN_URI"],
+            "auth_provider_x509_cert_url": os.environ[
                 "GOOGLE_SHEETS_AUTH_PROVIDER_X509_CERT_URL"
-            ),
-            "client_x509_cert_url": os.getenv("GOOGLE_SHEETS_CLIENT_X509_CERT_URL"),
+            ],
+            "client_x509_cert_url": os.environ["GOOGLE_SHEETS_CLIENT_X509_CERT_URL"],
             "universe_domain": "googleapis.com",
         }
 
