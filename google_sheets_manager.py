@@ -7,9 +7,6 @@ from googleapiclient.errors import HttpError
 
 class GoogleSheetsManager:
     def __init__(self):
-        """환경 변수 로드 및 검증"""
-        load_dotenv()
-
         required_env_vars = [
             "GOOGLE_SHEETS_TYPE",
             "GOOGLE_SHEETS_PROJECT_ID",
