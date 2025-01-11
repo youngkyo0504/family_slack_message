@@ -3,6 +3,9 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+project_id = os.environ.get("GOOGLE_SHEETS_PROJECT_ID")
+print(project_id)
+
 
 class GoogleSheetsManager:
     def __init__(self):
