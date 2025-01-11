@@ -1,6 +1,7 @@
 import os
 import pyupbit
-import requests
+
+from read_exchange_rate import read_exchange_rate
 
 
 # api연결
@@ -16,10 +17,9 @@ def calculate_kimchi_premium(kr_price, exchange_rate):
 
 def fetch_exchange():
     # 환율 정보 조회
-    exchange_rate = requests.get("https://api.exchangerate-api.com/v4/latest/USD")
-    usd_to_krw = exchange_rate.json()["rates"]["KRW"]
+    exchange_rate = read_exchange_rate()
 
-    return usd_to_krw
+    return exchange_rate
 
 
 def get_tether_premium():
