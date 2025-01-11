@@ -1,5 +1,5 @@
 import os
-from google.oauth2.credentials import Credentials
+from dotenv import load_dotenv
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -7,12 +7,35 @@ from googleapiclient.errors import HttpError
 
 class GoogleSheetsManager:
     def __init__(self):
-        # 환경 변수에서 인증 정보 가져오기
+        """환경 변수 로드 및 검증"""
+        load_dotenv()
+
+        required_env_vars = [
+            "GOOGLE_SHEETS_TYPE",
+            "GOOGLE_SHEETS_PROJECT_ID",
+            "GOOGLE_SHEETS_PRIVATE_KEY_ID",
+            "GOOGLE_SHEETS_PRIVATE_KEY",
+            "GOOGLE_SHEETS_CLIENT_EMAIL",
+            "GOOGLE_SHEETS_CLIENT_ID",
+        ]
+
+        # 필수 환경 변수 검증
+        missing_vars = [var for var in required_env_vars if not os.getenv(var)]
+        if missing_vars:
+            raise ValueError(
+                f"Missing required environment variables: {', '.join(missing_vars)}"
+            )
+
+        # private key 특수 처리 (개행 문자 변환)
+        private_key = os.getenv("GOOGLE_SHEETS_PRIVATE_KEY")
+        if private_key:
+            private_key = private_key.replace("\\n", "\n")
+
         credentials_dict = {
             "type": os.getenv("GOOGLE_SHEETS_TYPE"),
             "project_id": os.getenv("GOOGLE_SHEETS_PROJECT_ID"),
             "private_key_id": os.getenv("GOOGLE_SHEETS_PRIVATE_KEY_ID"),
-            "private_key": os.getenv("GOOGLE_SHEETS_PRIVATE_KEY"),
+            "private_key": private_key,
             "client_email": os.getenv("GOOGLE_SHEETS_CLIENT_EMAIL"),
             "client_id": os.getenv("GOOGLE_SHEETS_CLIENT_ID"),
             "auth_uri": os.getenv("GOOGLE_SHEETS_AUTH_URI"),
