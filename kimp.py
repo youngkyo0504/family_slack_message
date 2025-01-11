@@ -46,7 +46,7 @@ def get_tether_premium():
     # 프리미엄 수준에 따른 메시지 추가
     if premium > 2.5:
         message += "\n⚠️ 김프가 높습니다. 매수시 주의하세요!"
-    elif premium < 0:
+    elif premium < 1:
         message += "\n💡 김프가 낮습니다. 매수 기회일 수 있습니다."
 
     return message.strip()
