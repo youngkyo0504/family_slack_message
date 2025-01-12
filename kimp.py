@@ -50,8 +50,8 @@ def get_tether_premium():
 - USDT/KRW: {format(round(usdt_krw), ',')}원
 - USD/KRW: {format(round(exchange_rate), ',')}원
 - 김치프리미엄: {premium}%
-- 현재 수익률: {(round(avg_price) - round(usdt_krw)) / round(usdt_krw) * 100:.2f}%
-- 실현 가능 차익: {(round(avg_price) - round(usdt_krw)) *  quantity:.2f}원
+- 현재 수익률: { (round(usdt_krw) - round(avg_price)) / round(usdt_krw) * 100:.2f}%
+- 실현 가능 차익: {  (round(usdt_krw) - round(avg_price)) *  quantity:.2f}원
     """
 
     # 프리미엄 수준에 따른 메시지 추가
