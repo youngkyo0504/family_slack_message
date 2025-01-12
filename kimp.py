@@ -1,4 +1,5 @@
 import os
+from avg_price import read_avg_price
 import pyupbit
 
 from read_exchange_rate import read_exchange_rate
@@ -34,6 +35,7 @@ def get_tether_premium():
 
     # 김치프리미엄 계산
     premium = calculate_kimchi_premium(usdt_krw, exchange_rate)
+    avg_price, quantity = read_avg_price()
 
     # 메시지 작성
     message = f"""
@@ -41,6 +43,8 @@ def get_tether_premium():
 - USDT/KRW: {format(round(usdt_krw), ',')}원
 - USD/KRW: {format(round(exchange_rate), ',')}원
 - 김치프리미엄: {premium}%
+- 현재 수익률: {(round(avg_price) - round(usdt_krw)) / round(usdt_krw) * 100:.2f}%
+- 실현 가능 차익: {(round(avg_price) - round(usdt_krw)) * quantity:.2f}원
     """
 
     # 프리미엄 수준에 따른 메시지 추가
