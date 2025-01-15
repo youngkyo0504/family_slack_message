@@ -2,7 +2,7 @@ name: check_bull_market_every_9AM
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # 매 6시간마다 실행 (00:00, 06:00, 12:00, 18:00)
+    - cron: "0 */4 * * *" # 매 6시간마다 실행 (00:00, 04:00, 08:00, 12:00, 16:00, 18:00)
   push:
     branches: [main]
 
