@@ -18,7 +18,7 @@ post_message(
     + "\n\n"
     + tether_premium_message
     + "\n\n"
-    + "현재 리스크는"
+    + "현재 리스크는 "
     + risk_info["current_risk"]
     + "입니다.",
 )
