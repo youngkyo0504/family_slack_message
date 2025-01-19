@@ -9,6 +9,7 @@ slack_token = os.environ["SLACK_TOKEN"]
 body = bull_market("KRW-BTC")
 tether_premium_message = get_tether_premium()
 risk_info = get_risk_info("BTC")
+print(risk_info)
 
 
 post_message(
