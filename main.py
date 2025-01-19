@@ -9,7 +9,6 @@ slack_token = os.environ["SLACK_TOKEN"]
 body = bull_market("KRW-BTC")
 tether_premium_message = get_tether_premium()
 risk_info = get_risk_info("BTC")
-print(risk_info)
 
 
 post_message(
@@ -20,6 +19,6 @@ post_message(
     + tether_premium_message
     + "\n\n"
     + "현재 리스크는"
-    + risk_info.current_risk
+    + risk_info["current_risk"]
     + "입니다.",
 )
